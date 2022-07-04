@@ -20,11 +20,11 @@ public class MyApplication extends Application {
         return myLocation;
     }
 
-    public MyApplication getIstance(){
+    public MyApplication getInstance(){//importante il nome del metodo sia quello si sovracrive
         return singleton;
     }
 
-    public void OnCreate(){
+    public void onCreate(){ //importante il nome del metodo sia quello si sovracrive
         super.onCreate();
         singleton=this;
         myLocation = new ArrayList<>();

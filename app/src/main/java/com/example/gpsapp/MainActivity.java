@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -126,6 +127,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn_showWayPointLlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, ShowDasveLocationsList.class);
+                startActivity(i);
+            }
+        });
+
         UpdateGPS();
     }
 
@@ -158,13 +167,15 @@ public class MainActivity extends AppCompatActivity {
         // avere la location dal client
         // update UI
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED ){
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ){
             Task<Location> lastLocation = fusedLocationProviderClient.getLastLocation();
-            lastLocation.addOnSuccessListener(this, location -> {
-                // We got DATA
-                UpdateUIValue(location);
-                currentLocation = location;
-
+            lastLocation.addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // We got DATA
+                            UpdateUIValue(location);
+                            currentLocation = location;
+                        }
             });
         }else{
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -179,7 +190,6 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         switch (requestCode){
-
             case PERMISSIONS_FINE_LOCATION:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED ) {
                     UpdateGPS();
@@ -194,6 +204,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void UpdateUIValue(Location location){
+
+        if(location == null ) return;
         // UPDATE UI con data
         tv_lat.setText(String.valueOf(location.getLatitude()));
         tv_lon.setText(String.valueOf(location.getLongitude()));

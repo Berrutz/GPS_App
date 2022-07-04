@@ -11,7 +11,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="16dp"
         android:text="Lat:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,10 +20,10 @@
         android:id="@+id/tv_lat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
         android:text="0.00"
-        app:layout_constraintStart_toEndOf="@+id/tv_labellat"
+        app:layout_constraintStart_toStartOf="@+id/tv_labellat"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="lon:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_labellat" />
@@ -40,10 +40,10 @@
         android:id="@+id/tv_lon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="8dp"
         android:text="0.00"
-        app:layout_constraintStart_toEndOf="@+id/tv_labellon"
+        app:layout_constraintStart_toStartOf="@+id/tv_labellon"
         app:layout_constraintTop_toBottomOf="@+id/tv_lat" />
 
     <TextView
@@ -51,18 +51,18 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="Altitude:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_labellon" />
 
     <TextView
         android:id="@+id/tv_altitude"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_width="28dp"
+        android:layout_height="19dp"
+        android:layout_marginEnd="207dp"
         android:text="0.00"
-        app:layout_constraintStart_toEndOf="@+id/tv_labelaltitude"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_labelaltitude" />
 
     <TextView
@@ -77,11 +77,11 @@
 
     <TextView
         android:id="@+id/tv_accuracy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_width="37dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="198dp"
         android:text="0.00"
-        app:layout_constraintStart_toEndOf="@+id/tv_labelaccuracy"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_labelaccuracy" />
 
     <TextView
@@ -96,19 +96,19 @@
 
     <TextView
         android:id="@+id/tv_speed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="40dp"
+        android:layout_height="17dp"
+        android:layout_marginEnd="195dp"
         android:text="0.00"
-        app:layout_constraintStart_toEndOf="@+id/tv_labelspeed"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_labelspeed" />
 
     <TextView
         android:id="@+id/tv_labelsensor"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="16dp"
         android:text="Sensor:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw_gps" />
@@ -126,8 +126,8 @@
         android:id="@+id/tv_labelupdates"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="16dp"
         android:text="Updates:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sw_locationsupdates" />
@@ -136,33 +136,32 @@
         android:id="@+id/tv_updates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginEnd="216dp"
         android:text="Off"
-        app:layout_constraintStart_toEndOf="@+id/tv_labelupdates"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_labelupdates" />
 
     <Switch
         android:id="@+id/sw_locationsupdates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="184dp"
         android:checked="true"
         android:minHeight="48dp"
         android:text="Location Updates"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <Switch
         android:id="@+id/sw_gps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="8dp"
         android:minHeight="48dp"
         android:text="GPS/SavePower"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_labelupdates" />
 
@@ -187,57 +186,64 @@
         android:id="@+id/divider"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="12dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintTop_toBottomOf="@+id/tv_address"
+        app:layout_constraintTop_toBottomOf="@+id/tv_lbladdress"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="1dp" />
 
     <TextView
         android:id="@+id/tv_labelCrubCounter"
-        android:layout_width="85dp"
-        android:layout_height="15dp"
+        android:layout_width="86dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="8dp"
         android:text="WayPoint"
-        app:layout_constraintStart_toStartOf="@+id/tv_labelsensor"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="523dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_labelsensor"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/tv_countsOfCrumbs"
-        android:layout_width="29dp"
-        android:layout_height="16dp"
+        android:layout_width="31dp"
+        android:layout_height="19dp"
         android:text="0"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="522dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_labelCrubCounter"
+        app:layout_constraintTop_toTopOf="@+id/tv_labelCrubCounter"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_newWayPoint"
-        android:layout_width="347dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="249dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
         android:text="New Way Point"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_labelCrubCounter"
-        tools:layout_editor_absoluteX="35dp"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_showWayPointLlist"
-        android:layout_width="348dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="6dp"
+        android:layout_width="251dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:text="show Way Point Llist"
-        app:layout_constraintTop_toBottomOf="@+id/btn_newWayPoint"
-        tools:layout_editor_absoluteX="35dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_newWayPoint" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="345dp"
-        android:layout_height="40dp"
+        android:layout_width="256dp"
+        android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:text="Button"
-        app:layout_constraintTop_toBottomOf="@+id/btn_showWayPointLlist"
-        tools:layout_editor_absoluteX="35dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_showWayPointLlist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
