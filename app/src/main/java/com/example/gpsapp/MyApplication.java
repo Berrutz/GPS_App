@@ -12,11 +12,11 @@ public class MyApplication extends Application {
 
     private List<Location> myLocation;
 
-    public void setMyLocation(List<Location> myLocation) {
+    public void setMyLocations(List<Location> myLocation) {
         this.myLocation = myLocation;
     }
 
-    public List<Location> getMyLocation() {
+    public List<Location> getMyLocations() {
         return myLocation;
     }
 

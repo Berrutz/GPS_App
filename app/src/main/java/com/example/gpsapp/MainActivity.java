@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
     public static final int DEFAULT_UPDATE_INTERVAL = 30;
     public static final int FAST_UPDATE_INTERVAL = 5;
     private static final int PERMISSIONS_FINE_LOCATION = 99;
-    private TextView tv_accuracy, tv_address, tv_altitude, tv_lat, tv_sensor, tv_lon, tv_speed, tv_updates = null;
+    private TextView tv_accuracy, tv_address, tv_altitude, tv_lat, tv_sensor, tv_lon, tv_speed, tv_updates ,tv_countsOfCrumbs = null;
     private Switch sw_gps, sw_locationsupdates = null;
     private Button btn_showWayPointLlist , btn_newWayPoint = null;
 
 
     Location currentLocation;
-    List<Location> locations;
+    List<Location> savedLocations;
     // Location Request - Classe per configurare il GPS
     LocationRequest locationRequest = null;
 
@@ -64,8 +64,10 @@ public class MainActivity extends AppCompatActivity {
         tv_lon = findViewById(R.id.tv_lon);
         tv_speed = findViewById(R.id.tv_speed);
         tv_updates = findViewById(R.id.tv_updates);
+        tv_countsOfCrumbs = findViewById(R.id.tv_countsOfCrumbs);
         btn_newWayPoint = findViewById(R.id.btn_newWayPoint);
         btn_showWayPointLlist = findViewById(R.id.btn_showWayPointLlist);
+
 
         sw_gps = findViewById(R.id.sw_gps);
         sw_locationsupdates = findViewById(R.id.sw_locationsupdates);
@@ -116,9 +118,11 @@ public class MainActivity extends AppCompatActivity {
         btn_newWayPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // get gps location
-
+                // get gps location that we have
                 // add loc to global list
+                MyApplication myApplication = (MyApplication) getApplicationContext();
+                savedLocations = myApplication.getMyLocations();
+                savedLocations.add(currentLocation);
             }
         });
 
@@ -156,12 +160,11 @@ public class MainActivity extends AppCompatActivity {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED ){
             Task<Location> lastLocation = fusedLocationProviderClient.getLastLocation();
-            lastLocation.addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                @Override
-                public void onSuccess(Location location) {
-                    // We got DATA
-                    UpdateUIValue(location);
-                }
+            lastLocation.addOnSuccessListener(this, location -> {
+                // We got DATA
+                UpdateUIValue(location);
+                currentLocation = location;
+
             });
         }else{
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -215,5 +218,12 @@ public class MainActivity extends AppCompatActivity {
             tv_address.setText(String.valueOf("Non Available Address :( "));
             //e.printStackTrace();
         }
+
+        MyApplication myApplication = (MyApplication) getApplicationContext();
+        savedLocations = myApplication.getMyLocations();
+        tv_countsOfCrumbs.setText(Integer.toString(savedLocations.size()));
+
+
+
     }
 }
