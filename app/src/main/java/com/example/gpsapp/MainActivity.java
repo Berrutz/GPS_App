@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
         // update UI
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ){
-            Task<Location> lastLocation = fusedLocationProviderClient.getLastLocation();
+            @SuppressLint("MissingPermission") Task<Location> lastLocation = fusedLocationProviderClient.getLastLocation();
             lastLocation.addOnSuccessListener(this, new OnSuccessListener<Location>() {
                         @Override
                         public void onSuccess(Location location) {
