@@ -1,16 +1,19 @@
 package com.example.gpsapp;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.location.Location;
 import android.os.Bundle;
 import android.os.LocaleList;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.gpsapp.databinding.ActivityMapsBinding;
 
@@ -67,5 +70,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             lastLocation=latLng;
         }
         if(lastLocation!=null)  mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lastLocation,12.0f));
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {    // al click del Marker mi dice quante volte lho toccato
+              @Override
+              public boolean onMarkerClick(@NonNull Marker marker) {
+                  Integer clicks = (Integer) marker.getTag();
+                  if(clicks == null) clicks=0;
+                  clicks++;
+                  marker.setTag(clicks);
+                  Toast.makeText(MapsActivity.this,"Marker: " + marker.getTitle() + " was clicked " + marker.getTag() + " times" , Toast.LENGTH_SHORT).show();
+                  return false;
+              }
+          }
+        );
     }
 }
