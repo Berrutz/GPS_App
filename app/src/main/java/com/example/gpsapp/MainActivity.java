@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int PERMISSIONS_FINE_LOCATION = 99;
     private TextView tv_accuracy, tv_address, tv_altitude, tv_lat, tv_sensor, tv_lon, tv_speed, tv_updates ,tv_countsOfCrumbs = null;
     private Switch sw_gps, sw_locationsupdates = null;
-    private Button btn_showWayPointLlist , btn_newWayPoint = null;
+    private Button btn_showWayPointLlist , btn_newWayPoint , btn_showmap = null;
 
 
     Location currentLocation;
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         tv_countsOfCrumbs = findViewById(R.id.tv_countsOfCrumbs);
         btn_newWayPoint = findViewById(R.id.btn_newWayPoint);
         btn_showWayPointLlist = findViewById(R.id.btn_showWayPointLlist);
+        btn_showmap = findViewById(R.id.btn_showmap);
 
 
         sw_gps = findViewById(R.id.sw_gps);
@@ -131,6 +132,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, ShowDasveLocationsList.class);
+                startActivity(i);
+            }
+        });
+
+        btn_showmap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, MapsActivity.class);
                 startActivity(i);
             }
         });
