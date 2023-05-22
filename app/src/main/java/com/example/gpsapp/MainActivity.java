@@ -11,8 +11,10 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.nfc.Tag;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -86,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onLocationResult(@NonNull LocationResult locationResult) {
                 super.onLocationResult(locationResult);
+                Log.i("CallBack"," - on Callback result");
+                //Toast.makeText(MainActivity.this," - on Callback result",Toast.LENGTH_LONG);
                 Location location = locationResult.getLastLocation();
                 UpdateUIValue(location);
             }
@@ -110,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (sw_locationsupdates.isChecked()) { // se lo switch è on
+                    //Toast.makeText(MainActivity.this,"start tracking",Toast.LENGTH_LONG).show();
                     startLocationTracking();
                 } else {
                     stopLocationTracking();
@@ -154,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }*/
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallBack, null);
+        //Toast.makeText(MainActivity.this,"After requestLocationUpdates",Toast.LENGTH_LONG).show();
+        Log.i("startLocationTracking"," - After requestLocationUpdates");
         UpdateGPS();
     }
 
@@ -182,13 +189,16 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Location location) {
                             // We got DATA
+                            Log.i("UpdateGPS"," - lastLocation.addOnSuccessListener");
                             UpdateUIValue(location);
                             currentLocation = location;
                         }
             });
         }else{
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                requestPermissions(new String[]{ Manifest.permission.ACCESS_FINE_LOCATION },PERMISSIONS_FINE_LOCATION);
+                requestPermissions(new String[]{
+                        Manifest.permission.ACCESS_FINE_LOCATION }
+                        ,PERMISSIONS_FINE_LOCATION);
         }
 
     }
